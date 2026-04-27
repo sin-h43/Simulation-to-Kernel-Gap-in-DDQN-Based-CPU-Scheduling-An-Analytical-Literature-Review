@@ -1,94 +1,105 @@
 # 🧠 Simulation-to-Kernel Gap in DDQN-Based CPU Scheduling
 
-An IEEE-style research study analyzing why Deep Reinforcement Learning (DDQN) schedulers, despite strong simulation performance, have not been deployed in real-world operating system kernels.
+An analytical literature review exploring the gap between simulation performance and real-world deployment of Deep Reinforcement Learning (DDQN) based CPU schedulers.
 
 ---
 
 ## 📌 Overview
 
-Recent research reports significant improvements (20–30%) in CPU scheduling performance using DDQN-based approaches. However, none of these methods have been adopted in production operating systems.
+While multiple studies report 20–30% improvements in CPU scheduling performance using DDQN, none have been deployed in production operating systems.
 
-This study investigates **why this gap exists**, shifting focus from algorithm performance to **deployment feasibility**.
+This work investigates **why this gap exists**, focusing on system-level constraints rather than algorithmic performance.
 
 ---
 
-## 🎯 Objectives
+## 🎯 Objective
 
-- Analyze the gap between simulation results and real-world deployment  
-- Identify technical and architectural barriers in OS-level scheduling  
-- Evaluate feasibility of DRL-based schedulers in kernel environments  
-- Propose structured frameworks to assess deployment readiness  
+- Understand limitations of DRL-based schedulers in real OS environments  
+- Analyze differences between simulation and kernel-level execution  
+- Identify practical barriers to deployment  
+- Propose structured evaluation frameworks  
+
+---
+
+## 📚 Methodology
+
+- Systematic review of **45+ research papers (2006–2026)**  
+- Comparative analysis of:
+  - Classical schedulers (CFS, MLFQ)
+  - DRL-based schedulers (DQN, DDQN, PPO, etc.)
+- Evaluation based on **deployment feasibility, not just performance metrics**
 
 ---
 
 ## 🔍 Key Contributions
 
-- 📊 **Deployment Readiness Score (DRS)**  
-  A metric to evaluate whether a scheduling approach is suitable for real-world deployment  
+### 1. Deployment Readiness Score (DRS)
+A framework to assess whether a scheduler is viable for real-world deployment across criteria such as:
+- Latency constraints  
+- Determinism  
+- Hardware compatibility  
+- Real-world validation  
 
-- ⚙️ **Latency Decomposition Model (T₁–T₄)**  
-  Breaks down scheduling overhead into:
-  - State collection  
-  - Inference time  
-  - Kernel overhead  
-  - Worst-case latency variance  
+---
 
-- ⚖️ **Three-Body Constraint Model**  
-  Captures trade-offs between:
-  - Decision latency  
-  - State observability  
-  - Policy complexity  
+### 2. Latency Decomposition Model (T₁–T₄)
 
-- 🧠 **DDQN Scheduling Framework (Simulation-Based)**  
-  - Extended state representation  
-  - Fairness-aware reward function  
-  - Evaluated using SimPy  
+Breaks scheduling overhead into:
+- State collection  
+- Inference time  
+- Kernel overhead  
+- Worst-case latency  
+
+---
+
+### 3. Three-Body Constraint Model
+
+Defines trade-offs between:
+- Decision latency  
+- State observability  
+- Policy complexity  
+
+---
+
+### 4. DDQN Framework (Conceptual)
+
+- Extended state representation  
+- Fairness-aware reward function  
+- Evaluated using simulation tools (SimPy)  
 
 ---
 
 ## 📊 Key Findings
 
-- Classical schedulers (e.g., CFS, MLFQ) are **deployment-ready (5/6 score)**  
-- DRL-based schedulers score **0/6 in deployment feasibility**  
+- Classical schedulers are **deployment-ready (5/6)**  
+- DRL schedulers score **0/6 in feasibility**  
 - Simulation results fail to capture:
-  - Kernel-level latency constraints  
+  - Kernel constraints  
+  - Real-time latency requirements  
   - Hardware variability  
-  - Safety and determinism requirements  
 
 ---
 
 ## ⚠️ Core Insight
 
-> Deep Reinforcement Learning scheduling is not just an AI problem — it is a **real-time systems engineering problem**.
+> The challenge of RL-based scheduling is not purely algorithmic—it is fundamentally a **systems engineering problem**.
 
 ---
 
-## 🛠️ Methodology
+## 🛠️ Tools & Concepts
 
-- Systematic review of **45+ research papers (2006–2026)**  
-- Comparative analysis of classical vs DRL schedulers  
-- Simulation using **SimPy** for validation  
-- Analytical modeling of kernel constraints  
-
-
+- Python, SimPy  
+- Reinforcement Learning (DDQN)  
+- Operating Systems Scheduling  
+- Performance Modeling  
 
 ---
 
-## 🔧 Tools & Technologies
+## 🚀 Future Scope
 
-- Python  
-- SimPy  
-- Deep Reinforcement Learning (DDQN)  
-- Operating Systems Concepts  
-
----
-
-## 🚀 Future Work
-
-- Kernel-level implementation using sched_ext (Linux)  
-- Real-world latency measurement  
-- Formal fairness guarantees  
-- Cross-platform scheduler generalization  
+- Kernel-level experimentation (sched_ext)  
+- Real-world latency validation  
+- Integration with production systems  
 
 ---
 
@@ -96,11 +107,9 @@ This study investigates **why this gap exists**, shifting focus from algorithm p
 
 **Sinchana K**  
 B.Tech AI & ML, PES University  
-🔗 GitHub: https://github.com/sin-h43  
-🔗 LinkedIn: https://linkedin.com/in/sinchana-k06  
 
 ---
 
 ## ⭐ Note
 
-This work is simulation-based and aims to bridge the gap between theoretical performance and real-world system constraints.
+This work is a **literature-driven analysis** and does not claim real-world deployment results. It focuses on bridging the gap between theory and practical systems.
